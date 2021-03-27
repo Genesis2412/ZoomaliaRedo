@@ -31,8 +31,8 @@
                 <li><a href="veterinary.php">VETERINARY</a></li>
                 <li><a style="color: white;">SHOP NOW</a>
                     <ul>
-                        <li><a>DOG</a></li>
-                        <li><a>CAT</a></li>
+                        <li><a href="dogproduct.php">DOG</a></li>
+                        <li><a href="catproduct.php">CAT</a></li>
                     </ul>
                 </li>
                 <li><a href="index.php#contactUs">CONTACT US</a></li>
@@ -91,17 +91,17 @@
                 <div id="productContainer"> 
                     <?php
                     $xml=simplexml_load_file("products.xml");
-                    $products = $xml->xpath('/products/catProducts');
+                    $products = $xml->xpath("/products/product[Type='Cat']");
                     foreach($products as $product) 
                     {                   
                         echo'<div class="col-sm-4 col-lg-3 col-md-3">
                                 <div style="border:1px solid #ccc; border-radius:5px; padding:16px; margin-bottom:16px; height:450px;">
-                                    <img src="'. $product->img .'" alt="" class="img-responsive" width="200px">
+                                    <img src="./img/'. $product->img .'" alt="" class="img-responsive" width="200px">
                                     <h4 style="text-align:center;" class="none" >'.$product->Name .'</h4>
                                     <p align="center"><strong> DETAILS: '. $product->Description .'</strong></p>
                                     <h4 style="text-align:center;" class="text-danger" >Rs '. $product->Price .'</h4>
                                     <form>
-                                        <button type="button" class="btn btn-success" onclick="addTocart('. $product->id .')"style="margin-top:10px;position:relative;left:30%;">Add to Cart</button
+                                        <button type="button" class="btn btn-success" onclick="addTocart('. $product['id'] .')"style="margin-top:10px;position:relative;left:30%;">Add to Cart</button
                                     </form>
                                     
                                 </div>
@@ -146,15 +146,17 @@
             xhttp.send();
 
             function myFunction(xml) {
-                var x, i;
+                var x, y, i;
                 var xmlDoc = xml.responseXML;
                 var list='<select id="list"><option value="SELECT TYPE" disabled selected="selected">SELECT CATEGORY</option><option value="All">All</option>'
-                x = xmlDoc.getElementsByTagName('catProducts');
+                x = xmlDoc.getElementsByTagName('Type');
+                y = xmlDoc.getElementsByTagName('Name');
                 for (i = 0; i < x.length; i++) 
                 {
-                    var attribute = ''; 
-                    attribute = x[i].getAttribute('category');
-                    list += '<option>' + attribute + '</option>';
+                    if(x[i].childNodes[0].nodeValue == "Cat")
+                    {
+                        list += '<option>' + y[i].childNodes[0].nodeValue + '</option>';
+                    }
                 }
                 list += '</select>';
                 document.getElementById("selectList").innerHTML = list;

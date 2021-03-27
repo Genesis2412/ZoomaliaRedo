@@ -20,8 +20,9 @@
         $total = 0;
         foreach($_SESSION["cart"] as $objects => $values)
         {
+            $src="./img/".$values["item_image"];
   			$view=$view."<tr>";
-            $view=$view."<td><img src=".$values["item_image"]."></td>";
+            $view=$view."<td><img src=" .$src. "></td>";
             $view=$view."<td>" .$values["item_name"]. "</td>";
             $view=$view."<td>" .$values["item_quantity"]. "</td>";
             $view=$view."<td>Rs" .$values["item_price"]. "</td>";

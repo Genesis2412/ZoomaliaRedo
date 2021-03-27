@@ -106,12 +106,12 @@
                             {
                         ?>
                         <tr>
-                            <td><img src="<?php echo $values['item_image']; ?>"></td>
+                            <td><img src="./img/<?php echo $values['item_image']; ?>"></td>
                             <td><?php echo $values["item_name"]; ?></td>
                             <td><?php echo $values["item_quantity"]; ?></td>
                             <td>Rs <?php echo $values["item_price"]; ?></td>
                             <td>Rs <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
-                            <td><button type="button" class="btn btn-danger" onclick="deleteSession(<?php echo $values["item_id"]; ?>)">Remove</button></td>
+                            <td><button type="button" class="btn btn-danger" onclick="deleteSession(<?php echo $values['item_id']; ?>)">Remove</button></td>
                         </tr>
                         <?php
                                 $total = $total + ($values["item_quantity"] * $values["item_price"]);
