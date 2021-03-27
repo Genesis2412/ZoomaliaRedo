@@ -1,86 +1,84 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="products.xsl"?>
 <products xs:noNamespaceSchemaLocation = "products.xsd" xmlns:xs = "http://www.w3.org/2001/XMLSchema-instance">
-      <!--Dog Products-->
-      <dogProducts category="Dog Collar">
-          <id>1</id>
+
+  <product id="1">
           <Name>Dog Collar</Name>
           <Description>Red collar with paw prints</Description>
-          <Price>200.00</Price>
-          <img>img/y1.jpg</img>
-      </dogProducts>
-
-      <dogProducts category="Dog Harness">
-            <id>2</id>
-            <Name>Dog Harness</Name>
+          <Price currency="Rs">200.00</Price>
+          <img>y1.jpg</img>
+          <dogProducts category="Dog Collar"></dogProducts>
+  </product>
+  
+  <product id="2">
+           <Name>Dog Harness</Name>
             <Description>Adjustable harness with leash lead set</Description>
-            <Price>600.00</Price>
-            <img>img/y3.jpg</img>
-      </dogProducts>
-      
-      <dogProducts category="Dog Brush">
-            <id>3</id>
-            <Name>Dog Brush</Name>
+            <Price currency="Rs">600.00</Price>
+            <img>y3.jpg</img>
+            <dogProducts category="Dog Harness"></dogProducts>
+  </product>
+  
+  <product id="3">
+           <Name>Dog Brush</Name>
             <Description> Puppy grooming brush</Description>
-            <Price>150.00</Price>
-            <img>img/y5.jpg</img>
-      </dogProducts>
-      
-      <dogProducts category="Dog Leash">
-            <id>4</id>
+            <Price currency="Rs">150.00</Price>
+            <img>y5.jpg</img> 
+           <dogProducts category="Dog Brush"></dogProducts>
+  </product>
+  
+  <product id="4">
             <Name>Dog Leash </Name>
             <Description>Simple red dog leash</Description>
-            <Price>200.00</Price>
-           <img>img/y7.jpg</img>
-      </dogProducts>
-      
-      <dogProducts  category="Dog Toys">
-         <id>5</id>
+            <Price currency="Rs">200.00</Price>
+           <img>y7.jpg</img>
+           <dogProducts category="Dog Leash"></dogProducts>
+  </product>
+  
+  <product id="5">
           <Name>Dog Toys</Name>
           <Description> Includes 4 types of dog toys</Description>
-          <Price>250</Price>
-         <img>img/y9.jpg</img>
-      </dogProducts>
-      
-      <dogProducts category="Dog Kennel">
-          <id>6</id>
+          <Price currency="Rs">250</Price>
+         <img>y9.jpg</img>
+         <dogProducts  category="Dog Toys"></dogProducts>
+  </product>
+  
+  <product id="6">
           <Name>Dog Kennel</Name>
           <Description> Black modular kennel </Description>
-          <Price>1500</Price>
-         <img>img/y11.jpg</img>
-      </dogProducts>
-      
-      <!--Cat Products-->
-     <catProducts category="Cat Collar">
-          <id>7</id>
-          <Name>Cat Collar</Name>
+          <Price currency="Rs">1500</Price>
+          <img>y11.jpg</img>
+          <dogProducts category="Dog Kennel"></dogProducts>
+  </product>
+  
+  <product id="7">
+       <Name>Cat Collar</Name>
           <Description>Luxury green cat collar</Description>
-          <Price>300</Price>
-          <img>img/z1.jpg</img>
-      </catProducts>
-    
-       <catProducts category="Cat Harness">
-          <id>8</id>
+          <Price currency="Rs">300</Price>
+          <img>z1.jpg</img> 
+          <catProducts category="Cat Collar"></catProducts>
+  </product>
+  
+  <product id="8">
           <Name>Cat Harness</Name>
           <Description>Lightweight, soft and breatheable</Description>
-          <Price>500.50</Price>
-          <img>img/z3.jpg</img>
-      </catProducts>
-      
-      <catProducts category="Cat Toys">
-          <id>9</id>
-          <Name>Cat Toys</Name>
+          <Price currency="Rs">500.50</Price>
+          <img>z3.jpg</img>
+          <catProducts category="Cat Harness"></catProducts>
+  </product>
+  
+  <product id="9">
+        <Name>Cat Toys</Name>
           <Description> Small toy fish and feather</Description>
-          <Price>100</Price>
-          <img>img/z5.jpg</img>
-     </catProducts>
-      
-       <catProducts category="Cat Bed">
-         <id>10</id>
-          <Name>Cat Bed</Name>
+          <Price currency="Rs">100</Price>
+          <img>z5.jpg</img>
+          <catProducts category="Cat Toys"></catProducts>
+  </product>
+  
+  <product id="10">
+        <Name>Cat Bed</Name>
           <Description>Indoor cat bed</Description>
-          <Price>450</Price>
-          <img>img/z7.jpg</img>
-      </catProducts>
-      
-    </products>
+          <Price currency="Rs">450</Price>
+          <img>z7.jpg</img>
+          <catProducts category="Cat Bed"></catProducts>
+  </product>
+</products>
