@@ -5,12 +5,12 @@
     $quantity=1;
 
     $xml=simplexml_load_file("products.xml");
-    $products= $xml->xpath('/products/catProducts[id="'. $id .'"]');
+    $products= $xml->xpath('/products/product[@id="'. $id .'"]');
     foreach($products as $product) 
     { 
         if($product != '')
         {
-            $idnum = (string)$product->id;
+            $idnum = (string)$product['id'];
             $name = (string)$product->Name;
             $img = (string)$product->img;
             $price = (string)$product->Price;

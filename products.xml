@@ -29,7 +29,7 @@
   
   <product id="4">
     <Type>Dog</Type>
-    <Name>Dog Leash </Name>
+    <Name>Dog Leash</Name>
     <Description>Simple red dog leash</Description>
     <Price currency="Rs">200.00</Price>
     <img>y7.jpg</img>
