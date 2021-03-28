@@ -77,6 +77,7 @@
                             <th>Product Quantity</th>
                             <th>Product Price</th>
                             <th>Date Bought</th>
+                            <th>Phone Number</th>
                             <th>Email</th>
                         </tr>
 
@@ -90,6 +91,9 @@
                                 <td><xsl:value-of select="product/Quantity/text()"/></td>
                                 <td><xsl:value-of select="product/Price/text()"/></td> 
                                 <td><xsl:value-of select="product/Date/text()"/></td> 
+                                <td>
+                                    <a href="tel:{Phone/text()}"><xsl:value-of select="Phone/text()"/></a>                                    
+                                </td>
                                 <td>
                                     <a href="mailto:{Email/text()}"><xsl:value-of select="Email/text()"/></a>                                    
                                 </td>                  
