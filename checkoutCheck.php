@@ -27,10 +27,6 @@
 		{
 			echo "<h3 style='color:red;' >Enter a valid email!</h3>";
 		}
-		else 
-		{
-			echo "<h3 style='color:green;'>Product(s) Bought Successfully</h3>";
-		}
 	}
 	else 
 	{
@@ -135,8 +131,6 @@
 
 					//Save to XML file
 					$dom->save($xml_file_name);
-
-        			echo "$xml_file_name has been successfully created";
 				}
 				else
 				{
@@ -219,7 +213,7 @@
 
 						//Save to XML file
 						$dom->save('clients.xml');
-						echo 'Done'; 
+						echo "<h3 style='color:green;'>Product(s) Bought Successfully</h3>"; 
     			}
 				unset($_SESSION["cart"][$objects]);
 			}
