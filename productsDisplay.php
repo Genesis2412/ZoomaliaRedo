@@ -1,15 +1,17 @@
 <?php
-$xml = new DOMDocument();
-$xml->load( 'products.xml' );
+// Load XML file
+$xml = new DOMDocument;
+$xml->load('products.xml');
 
-#start xslt
-$xslt = new XSLTProcessor();
+// Load XSL file
+$xsl = new DOMDocument;
+$xsl->load('products.xsl');
 
-#import stylesheet
-$xsl = new DOMDocument();
-$xsl->load( 'products.xsl' );
-$xslt->importStylesheet($xsl);
+// Configure the transformer
+$proc = new XSLTProcessor;
 
-#print
-    print $xslt->transformToXML($xml);
-?> 
+// Attach the xsl rules
+$proc->importStyleSheet($xsl);
+
+echo $proc->transformToXML($xml);
+?>

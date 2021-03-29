@@ -70,7 +70,7 @@
       <body>
           <h2>All Products</h2>
 
-          <button>Add product</button>
+          <a href="addProduct.php"><button>Add product</button></a>
             <table>
                 <tr>
                   <th>Index</th>
@@ -88,8 +88,8 @@
                   <td><xsl:value-of select="Name/text()"/></td>
                   <td>Rs <xsl:value-of select="Price/text()"/></td>
                   <td><xsl:value-of select="Description/text()"/></td>
-                  <td><button>Edit</button></td>
-                  <td><button>Delete</button></td>
+                  <td><a href="editProduct.php"><button>Edit</button></a></td>
+                  <td><a href="" onclick="return confirm('Are you sure?')"><button>Delete</button></a></td>
                 </tr>
                 </xsl:for-each>
                 
