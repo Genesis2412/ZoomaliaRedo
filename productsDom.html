@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body onload="loadXMLDoc()">
+
+<table id="demo" border="1">
+<tr><th>Index</th><th>Name</th><th>Description</th><th>Price</th><th>Image</th></tr>
+</table>
+
+<script>
+function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xmlhttp.open("GET", "products.xml" , true);
+  xmlhttp.send();
+}
+
+function myFunction(xml) {
+  var x, i, xmlDoc, table;
+  xmlDoc = xml.responseXML;
+  table = "<tr><th>Id</th><th>Name</th><th>Description</th><th>Price</th><th>Image</th></tr>";
+  x = xmlDoc.getElementsByTagName("product")
+  for (i = 0; i < x.length; i++) { 
+    table += "<tr><td>" + 
+    
+        x[i].getElementsById("id")[0].nodeValue +
+    "</td><td>" +
+        x[i].getElementsByTagName("Name")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+        x[i].getElementsByTagName("Description")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+        x[i].getElementsByTagName("Price")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("Description")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+    x[i].getElementsByTagName("img")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+    
+    
+    
+</body>
+</html>
