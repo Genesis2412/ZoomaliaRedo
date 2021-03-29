@@ -1,93 +1,68 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="./css/addProduct.css">
+<?php
 
-</head>
-<body>
+    session_start();
 
-	<div class="btn">
-		<a href="products.xml"><button>Back</button></a>
-	</div>
+    if(isset($_POST['submit']))
+    {
+        $id = $_POST['id'];
+        $type = $_POST['type'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
+        $img = $_SESSION['filename'];
 
-	<div class="form" align="center">
-	<form method="POST">
-	<table>
-		<tr>
-			<td>Id</td>
-			<td><input type="number" name="id"></td>
-		</tr>
-        <tr>
-			<td>Type</td>
-			<td><input type="text" name="type"></td>
-		</tr>
-		<tr>
-			<td>Name</td>
-			<td><input type="text" name="name"></td>
-		</tr>
-		<tr>
-			<td>Description</td>
-			<td><input type="text" name="description"></td>
-		</tr>
-		<tr>
-			<td>Price</td>
-			<td><input type="number" name="price" placeholder="Rs"></td>
-		</tr>
-		<tr>
-			<td>Image</td>
-			<td><input type="file" src="img/." name="image"></td>
-		</tr>
-		
-		<tr>
-			<td><input type="submit" name="submitSave" name="Save"></td>
-		</tr>
-		
-	</table>
+        if($id != "" && $type != "" && $name != "" && $description != "" && $price != "" && $img != "")
+        {
+            $dom = new DOMDocument();
+        $dom->load('products.xml');
+        $dom->formatOutput = false;
 
-</form>
-</div>
+        // Get the root element
+        $root = $dom->getElementsByTagName('products');
+        $child_node = $root->item(0);        
 
-</body>
-</html>
+		// Create a new element
+        $product_node = $dom->createElement('product');        
+            $product_node->setAttribute( 'id', $id );
+            $child_node->appendChild( $product_node );
 
+            $child_node_type = $dom->createElement('Type', $type);
+            $product_node->appendChild($child_node_type);
 
-<?php 
+            $child_node_name = $dom->createElement('Name', $name);
+            $product_node->appendChild($child_node_name);
 
-$id=$_POST["id"];
-$type=$_POST["type"];
-$name=$_POST["name"];
-$description=$_POST["description"];
-$price=$_POST["price"];
-$image=$_POST["image"];
+            $child_node_description = $dom->createElement('Description', $description);
+            $product_node->appendChild($child_node_description);
 
-$dom = new DOMDocument();
-$dom->load('products.xml');
-$dom->formatOutput = true;
+            $child_node_price = $dom->createElement('Price', $price);
+            $child_node_price->setAttribute( 'currency', 'Rs' );
+            $product_node->appendChild($child_node_price);
 
-// Get the root element
-$root = $dom->getElementsByTagName('products');
-$child_node = $root->item(0);  
+            $child_node_img = $dom->createElement('img', $img);
+            $product_node->appendChild($child_node_img);
 
-// Create a new element
-$client_node = $dom->createElement('product'); 
+            //Save to XML file
+        $dom->save('products.xml');
+        echo ("<script type='text/javaScript'>
+	            window.alert('Product has been added successfully!');
+	            window.location.href='addproductform.php';
+	        </script>");
 
-$client_node->setAttribute('id', $id);
-$child_node->appendChild( $client_node);
+        unset($_SESSION['filename']);
+        }
+        else
+        {
+            echo ("<script type='text/javaScript'>
+	            window.alert('Fill in all details, please');
+	            window.location.href='addproductform.php';
+	        </script>");
+            unset($_SESSION['filename']);
+        }
 
-$child_node_type = $dom->createElement('Type', $type);
-$client_node->appendChild($child_node_type);
-
-$child_node_name = $dom->createElement('Name', $name);
-$client_node->appendChild($child_node_name);
-
-$child_node_description = $dom->createElement('Description', $description);
-$client_node->appendChild($child_node_description);
-
-$child_node_price = $dom->createElement('Price', $price);
-$client_node->setAttribute('currency', "Rs");
-$client_node->appendChild($child_node_price);
-
-$child_node_img = $dom->createElement('img', $image);
-$client_node->appendChild($child_node_img);
-
+    }
+    else
+    {
+        die ("Not this tym");
+    }        
 ?>
